@@ -1,0 +1,7 @@
+[02-Nov-2025 09:09:25 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: No such file or directory in /home/sinhbtve/public_html/admin/config.php:17
+Stack trace:
+#0 /home/sinhbtve/public_html/admin/config.php(17): mysqli->__construct()
+#1 /home/sinhbtve/public_html/api/track.php(5): require_once('/home/sinhbtve/...')
+#2 {main}
+  thrown in /home/sinhbtve/public_html/admin/config.php on line 17
+[02-Nov-2025 13:54:03 UTC] PHP Parse error:  syntax error, unexpected identifier "E", expecting ")" in /home/sinhbtve/public_html/api/movies.php on line 28

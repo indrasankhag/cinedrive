@@ -1,0 +1,1244 @@
+/* ==============================
+   🎬 CineDrive — UNIFIED STYLE SHEET (fixed)
+   ============================== */
+
+/* ===== Root Colors ===== */
+:root{
+  --primary:#2a6cff;--secondary:#ff3366;--bg:#0b0c10;--surface:#111218;--text:#e9ecf1;--muted:#b4bcc9;
+  --card:#141622;--card-border:rgba(255,255,255,0.06);--shadow:0 10px 30px rgba(0,0,0,0.35)
+}
+
+/* ===== Global Reset ===== */
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(42,108,255,.15), transparent 50%),
+    radial-gradient(900px 500px at 110% 10%, rgba(11,12,16,1), transparent 55%),
+    var(--bg);
+  color:var(--text);line-height:1.5
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:0;background:none;color:var(--text)}
+.container{max-width:1200px;margin:0 auto;padding:16px}
+
+/* ===== Top Logo ===== */
+.top-logo{display:flex;justify-content:center;align-items:center;padding:28px 0 20px;background:#0b0c10}
+.top-logo img{max-width:230px;transition:transform .4s ease,filter .4s ease;filter:drop-shadow(0 0 10px rgba(255,200,100,.25))}
+.top-logo img:hover{transform:scale(1.06);filter:drop-shadow(0 0 18px rgba(255,200,100,.5))}
+
+/* ===== Navbar ===== */
+.navbar{
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(15,16,25,.7);border:1px solid rgba(255,255,255,.06);
+  box-shadow:0 4px 20px rgba(0,0,0,.5);backdrop-filter:blur(14px) saturate(160%);
+  padding:14px 24px;border-radius:14px;margin:0 auto;position:sticky;top:0;z-index:150
+}
+
+/* ===== Menu ===== */
+.menu{display:flex;align-items:center;gap:1.8rem;list-style:none;margin:0;padding:0}
+.menu a,.dropdown-trigger{
+  font-weight:700;font-size:.9rem;color:var(--muted);text-transform:uppercase;padding:10px 16px;border-radius:10px;transition:all .25s
+}
+.menu a:hover,.dropdown-trigger:hover{color:var(--text);background:color-mix(in oklab, var(--primary) 10%, transparent)}
+.menu a.active,.dropdown-trigger.active{
+  color:#fff;background:linear-gradient(135deg, rgba(42,108,255,.25), rgba(255,51,102,.2));
+  border:1px solid rgba(42,108,255,.3);box-shadow:0 0 12px rgba(42,108,255,.25)
+}
+
+/* ===== Dropdown ===== */
+.dropdown{position:relative}
+.dropdown-menu{
+  position:absolute;top:calc(100% + 8px);left:0;width:220px;background:rgba(20,22,35,.95);
+  border:1px solid rgba(255,255,255,.08);border-radius:12px;box-shadow:0 8px 25px rgba(0,0,0,.5);
+  display:none;opacity:0;transform:translateY(-10px);transition:all .25s;z-index:200
+}
+.dropdown-menu[data-open="true"]{display:block;opacity:1;transform:translateY(0)}
+.dropdown-menu button{
+  width:100%;text-align:left;background:transparent;color:var(--text);padding:10px 12px;border-radius:10px;font-size:.9rem;transition:background .2s
+}
+.dropdown-menu button:hover{background:color-mix(in oklab, var(--primary) 12%, transparent)}
+
+/* ===== Search Box (Cinematic Glow) ===== */
+.search{
+  display:flex;align-items:center;gap:10px;background:rgba(20,22,30,.7);padding:10px 16px;border-radius:14px;border:1px solid rgba(255,255,255,.08);
+  width:clamp(240px,28vw,360px);transition:all .3s;box-shadow:0 0 0 rgba(42,108,255,0)
+}
+.search:hover,.search:focus-within{
+  border-color:rgba(42,108,255,.5);
+  box-shadow:0 0 10px rgba(42,108,255,.25),0 0 25px rgba(255,51,102,.15);
+  background:rgba(25,28,38,.9)
+}
+.search span{font-size:1.1rem;color:#a7b3d1;transition:color .3s}
+.search:hover span,.search:focus-within span{color:var(--primary)}
+.search input{background:transparent;border:none;color:var(--text);width:100%;outline:none;font-size:.9rem;letter-spacing:.3px;caret-color:var(--primary)}
+.search input::placeholder{color:rgba(200,210,230,.6)}
+
+/* ===== Card Grid ===== */
+.grid{margin-top:18px;display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.card{
+  background:var(--card);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;
+  transition:transform .25s, box-shadow .25s, border-color .25s
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(42,108,255,.25);border-color:rgba(42,108,255,.3)}
+.thumb{position:relative;aspect-ratio:2/3;background-size:cover;background-position:center}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.15))}
+.play-overlay{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(10,25,60,.8);border-radius:50%;
+  width:54px;height:54px;display:grid;place-items:center;transition:.3s
+}
+.play-overlay span{color:#fff;font-size:22px}
+.card:hover .play-overlay{transform:translate(-50%,-50%) scale(1.1)}
+.meta{padding:10px 12px 14px}
+.title{font-weight:700;font-size:15px}
+.sub{font-size:12px;color:var(--muted)}
+.desc{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* ===== Modal ===== */
+dialog#player{
+  width:min(1000px,92vw);border:1px solid var(--card-border);background:var(--card);color:var(--text);border-radius:14px;box-shadow:var(--shadow);padding:0
+}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.modal-head{display:flex;justify-content:space-between;align-items:center;background:var(--surface);border-bottom:1px solid var(--card-border);padding:10px 12px}
+.modal-body{aspect-ratio:16/9;width:100%;background:#000}
+.modal-body iframe{width:100%;height:100%;border:0}
+
+/* ===== Remove Play Overlay on TV Series Page Only ===== */
+body.tv-series-page .play-overlay{display:none!important}
+
+/* ===== Footer ===== */
+footer{margin-top:28px;border-top:1px solid var(--card-border);background:color-mix(in oklab, var(--bg) 85%, transparent)}
+.foot{padding:18px 0;display:grid;gap:10px;color:var(--muted)}
+.links{display:flex;gap:16px;flex-wrap:wrap}
+.links a:hover{color:var(--text)}
+
+/* ===== Series Page Styling ===== */
+.seasons{margin-top:20px;display:grid;gap:16px}
+.season{
+  background:linear-gradient(180deg, rgba(20,22,35,.9), rgba(10,11,18,.95));
+  border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:20px 22px;box-shadow:0 4px 25px rgba(0,0,0,.35);
+  transition:transform .25s, box-shadow .25s
+}
+.season:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(42,108,255,.25)}
+.season-head{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px;margin-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.08);padding-bottom:10px
+}
+.season-title{font-size:1.2rem;font-weight:700;color:var(--text)}
+.season-date{font-size:.9rem;color:var(--muted)}
+.episodes{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:16px}
+.episode{
+  background:rgba(25,27,38,.85);border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;transition:all .25s;cursor:pointer;box-shadow:0 0 0 rgba(0,0,0,0)
+}
+.episode:hover{transform:translateY(-4px);border-color:rgba(42,108,255,.3);box-shadow:0 6px 18px rgba(42,108,255,.25)}
+.episode img{width:100%;aspect-ratio:16/9;object-fit:cover;border-bottom:1px solid rgba(255,255,255,.06);transition:transform .3s}
+.episode:hover img{transform:scale(1.05)}
+.episode .ep-code{font-size:.78rem;color:var(--muted);margin:8px 0 0 10px}
+.episode .ep-title{font-size:.95rem;font-weight:700;color:var(--text);margin:6px 10px 2px}
+.episode .ep-date{font-size:.8rem;color:var(--muted);margin:0 10px 10px}
+.season-chevron{color:var(--muted);transition:transform .3s}
+.season.open .season-chevron{transform:rotate(90deg);color:var(--primary)}
+.season-chevron{display:none!important}
+.season-head{cursor:default}
+.episodes{display:grid!important}
+
+/* ===== Series Header (image + description) ===== */
+.series-header{
+  display:flex;align-items:flex-start;gap:28px;background:linear-gradient(145deg, rgba(20,22,35,.9), rgba(10,11,18,.95));
+  border:1px solid rgba(255,255,255,.06);border-radius:18px;padding:24px;box-shadow:0 6px 25px rgba(0,0,0,.35);margin-bottom:28px
+}
+.series-header img{
+  width:240px;height:auto;max-height:340px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 6px 15px rgba(0,0,0,.5);flex-shrink:0;transition:transform .3s, box-shadow .3s
+}
+.series-header img:hover{transform:scale(1.03);box-shadow:0 10px 25px rgba(42,108,255,.25)}
+.series-info{flex:1;display:flex;flex-direction:column;gap:12px}
+.series-info h2{font-size:1.8rem;font-weight:800;margin:0}
+.series-info p{font-size:1rem;color:var(--muted);line-height:1.7;text-align:justify}
+.series-year{
+  display:inline-flex!important;align-items:center;justify-content:center;background:rgba(255,255,255,.08);color:var(--muted);
+  font-size:.9rem;font-weight:600;padding:4px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);
+  width:fit-content!important;max-width:max-content;margin-top:10px
+}
+.season .season-num{display:none!important}
+
+/* Footer (credits block) */
+footer{background:#0b0c10;color:var(--muted);text-align:center;padding:30px 10px;border-top:1px solid rgba(255,255,255,.05);box-shadow:0 -2px 10px rgba(0,0,0,.4)}
+footer small{display:block;color:var(--text);line-height:1.8;font-size:.9rem;max-width:700px;margin:0 auto;opacity:.85}
+footer .heart{color:var(--secondary)}
+footer .center-text{text-align:center}
+/* ===== Pointer Cursor on Clickable Cards ===== */
+.card,
+.thumb,
+.episode,
+.collection,
+.series-header img {
+  cursor: pointer;
+}
+
+
+/* ===== Mobile Responsive (Only ≤720px) ===== */
+/* ============================
+   🌍 UNIVERSAL RESPONSIVE LAYOUT
+   (Keeps desktop unchanged)
+   ============================ */
+
+/* ===== Tablets & Foldables (≤1024px) ===== */
+@media (max-width: 1024px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+  }
+
+  .menu {
+    order: 1;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .menu a,
+  .dropdown-trigger {
+    padding: 9px 12px;
+    font-size: 0.9rem;
+    border-radius: 9px;
+    text-align: center;
+  }
+
+  .search {
+    order: 2;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .search input {
+    width: 100%;
+    font-size: 0.9rem;
+    max-width: 420px;
+  }
+}
+
+/* ===== Smartphones (≤720px) ===== */
+@media (max-width: 720px) {
+  .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .menu {
+    order: 1;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+  }
+
+  .menu a,
+  .dropdown-trigger {
+    padding: 8px 10px;
+    font-size: 0.82rem;
+    border-radius: 9px;
+    text-align: center;
+  }
+
+  .search {
+    order: 2;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .search input {
+    width: 100%;
+    font-size: 0.85rem;
+    max-width: 340px;
+  }
+
+  .top-logo img {
+    max-width: 200px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  .series-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .series-header img {
+    width: 80%;
+  }
+
+  .series-info p {
+    text-align: left;
+  }
+   dialog#player {
+    width: 95vw;
+    max-height: 90vh;
+    border-radius: 10px;
+  }
+
+  .modal-head {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .modal-body {
+    aspect-ratio: auto; /* disable fixed ratio on small screens */
+    width: 100%;
+    height: auto;
+    max-height: 60vh; /* limit height so it fits comfortably */
+  }
+
+  .modal-body iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+}
+
+/* ===== Compact Phones (≤480px) ===== */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 8px;
+    gap: 6px;
+  }
+
+  .menu,
+  .search {
+    width: 95%;
+  }
+
+  .menu a,
+  .dropdown-trigger {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .search input {
+    max-width: 300px;
+    font-size: 0.8rem;
+  }
+
+  .top-logo img {
+    max-width: 160px;
+  }
+
+  .series-header img {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .series-info h2 {
+    font-size: 1.4rem;
+  }
+
+  .series-info p {
+    font-size: 0.92rem;
+  }
+    dialog#player {
+    width: 98vw;
+    max-height: 85vh;
+  }
+
+  .modal-body {
+    max-height: 55vh;
+  }
+  
+}
+
+/* ===== Ultra-Small / Legacy Phones (≤360px) ===== */
+@media (max-width: 360px) {
+  .menu,
+  .search {
+    width: 98%;
+  }
+
+  .menu a,
+  .dropdown-trigger {
+    padding: 5px 6px;
+    font-size: 0.7rem;
+  }
+
+  .search input {
+    max-width: 260px;
+    font-size: 0.78rem;
+  }
+}
+/* ========================================
+   🎥 Balanced Responsive Player (CineDrive)
+   ======================================== */
+
+/* --- Default Desktop View --- */
+dialog#player {
+  width: min(900px, 90vw);
+  max-height: 85vh;
+  border: none;
+  border-radius: 14px;
+  background: rgba(12, 12, 18, 0.96);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+  overflow: hidden;
+  margin: auto;
+  backdrop-filter: blur(12px);
+}
+dialog#player {
+  display: block;           /* ensures <dialog> is visible to JS */
+  visibility: hidden;       /* hidden until opened */
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: scale(0.97);
+}
+dialog#player[open] {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(25, 25, 35, 0.95);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 14px;
+}
+.modal-head strong { font-size: 0.95rem; font-weight: 700; }
+.modal-head .close {
+  font-size: 0.85rem;
+  background: rgba(255,255,255,0.05);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: 0.25s;
+}
+.modal-head .close:hover { background: rgba(255,255,255,0.15); }
+
+.modal-body {
+  background: #000;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+.modal-body iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+}
+
+/* --- Tablets (max 1024px) --- */
+@media (max-width: 1024px) {
+  dialog#player {
+    width: 88vw;
+    max-height: 75vh;
+    border-radius: 12px;
+  }
+  .modal-body {
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
+}
+
+/* --- Mobiles (max 720px) --- */
+@media (max-width: 720px) {
+  dialog#player {
+    width: 94vw;
+    max-height: 65vh;
+    border-radius: 12px;
+    margin: 10vh auto; /* keeps nice spacing from top & bottom */
+  }
+  .modal-head {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  .modal-body {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* --- Compact Phones (max 480px) --- */
+@media (max-width: 480px) {
+  dialog#player {
+    width: 96vw;
+    max-height: 58vh;
+    border-radius: 10px;
+    margin: 12vh auto;
+  }
+  .modal-body {
+    aspect-ratio: 16 / 9;
+  }
+  .modal-head strong {
+    font-size: 0.85rem;
+  }
+  .modal-head .close {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+/* ===============================================
+   🎥 UNIVERSAL RESPONSIVE PLAYER — FINAL POLISH
+   (For all screen sizes and aspect ratios)
+   =============================================== */
+dialog#player {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.97);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  max-width: 92vw;
+  width: 600px;
+  margin: 0 auto;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+dialog#player[open] {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Header styling */
+.modal-head {
+  background: rgba(10, 12, 20, 0.95);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Body styling */
+.modal-body {
+  width: 100%;
+  background: #000;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 16/9;
+}
+
+.modal-body iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 0 0 14px 14px;
+}
+
+/* ===== Responsive tuning ===== */
+@media (max-width: 720px) {
+  dialog#player {
+    width: 95vw;
+    max-height: 70vh;
+  }
+  .modal-body {
+    aspect-ratio: 16/9;
+  }
+}
+@media (max-width: 480px) {
+  dialog#player {
+    width: 96vw;
+    max-height: 65vh;
+  }
+  .modal-body {
+    aspect-ratio: 16/9;
+  }
+}
+
+/* ===== Subscription Locked Styles ===== */
+.episode.locked {
+    opacity: 0.6;
+    cursor: pointer; /* So they can click to subscribe */
+}
+.episode.locked:hover {
+    transform: none; /* Don't have it "pop" on hover */
+    box-shadow: none;
+    border-color: rgba(255,255,255,.06);
+}
+.episode.locked .ep-title {
+    color: var(--muted);
+}
+
+/* ==================================
+   ====== Subscription Modal ========
+   ================================== */
+
+dialog#subscribeModal {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 500px;
+    width: 90vw;
+}
+
+/* This is the white form box */
+.subscribe-form {
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Style for the close button ( 'X' ) */
+.subscribe-form .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+}
+.subscribe-form .close-btn:hover {
+    color: #000;
+}
+
+.subscribe-form h2 {
+    margin-top: 0;
+    color: #2c3e50;
+    text-align: left;
+}
+.subscribe-form p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Form Group Styles from your admin.css */
+.subscribe-form .form-group {
+    margin-bottom: 1.5rem;
+}
+.subscribe-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+}
+.subscribe-form .form-group input[type="tel"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color: #333;
+}
+.subscribe-form .form-group p {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Button Style from your admin.css */
+.subscribe-form button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+}
+.subscribe-form button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* For success/error messages */
+#message-area-modal .error {
+    color: #c62828;
+    background: #ffebee;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #c62828;
+}
+#message-area-modal .success {
+    color: #2e7d32;
+    background: #e8f5e9;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #2e7d32;
+}
+/* ========================================
+   🔐 AUTH BUTTONS - TOP RIGHT CORNER
+   ======================================== */
+
+/* Container for auth buttons - positioned absolutely in header */
+.auth-buttons {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 200;
+}
+
+.auth-buttons .auth-btn {
+    padding: 10px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+/* Login Button - Outlined Style */
+.auth-buttons .login-btn {
+    background: transparent;
+    color: var(--text);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.auth-buttons .login-btn:hover {
+    border-color: var(--primary);
+    background: rgba(42, 108, 255, 0.1);
+    color: var(--primary);
+}
+
+/* Sign Up Button - Solid Style */
+.auth-buttons .signup-btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(42, 108, 255, 0.3);
+}
+
+.auth-buttons .signup-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 108, 255, 0.4);
+}
+
+/* User Info Display - After Login */
+.auth-buttons .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.auth-buttons .welcome-text {
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.auth-buttons .subscribe-btn {
+    background: linear-gradient(135deg, #ff3366, #ff6b6b);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
+    transition: all 0.3s ease;
+}
+
+.auth-buttons .subscribe-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.4);
+}
+
+.auth-buttons .logout-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--muted);
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.auth-buttons .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text);
+}
+
+/* Make header position relative for absolute positioning */
+header {
+    position: relative;
+}
+
+/* ========================================
+   🎨 AUTH MODAL - MODERN DESIGN
+   ======================================== */
+
+dialog#authModal {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 460px;
+    width: 94vw;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+dialog#authModal::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.auth-modal-container {
+    background: linear-gradient(145deg, #1a1d2e, #0f111d);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Close button */
+.auth-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 1.8rem;
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1;
+    z-index: 10;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.auth-close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    transform: rotate(90deg);
+}
+
+/* Tab navigation */
+.auth-tabs {
+    display: flex;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 1.25rem;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-tab:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+}
+
+.auth-tab.active {
+    color: var(--primary);
+    background: rgba(42, 108, 255, 0.1);
+}
+
+.auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 3px 3px 0 0;
+}
+
+/* Form container */
+.auth-form-container {
+    padding: 2.5rem 2rem;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.auth-form h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text);
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.auth-form .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+/* Message areas */
+.auth-message {
+    margin-bottom: 1.25rem;
+}
+
+.auth-message .error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-message .error::before {
+    content: '⚠️';
+    font-size: 1.2rem;
+}
+
+.auth-message .success {
+    color: #51cf66;
+    background: rgba(81, 207, 102, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(81, 207, 102, 0.3);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-message .success::before {
+    content: '✓';
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Form groups */
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form .form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.auth-form .form-group input {
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+.auth-form .form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(42, 108, 255, 0.1);
+}
+
+.auth-form .form-group input::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+.auth-form button[type="submit"] {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    width: 100%;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(42, 108, 255, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.auth-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(42, 108, 255, 0.4);
+}
+
+.auth-form button[type="submit"]:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ========================================
+   📱 SUBSCRIBE MODAL - MATCHING DESIGN
+   ======================================== */
+
+dialog#subscribeModal {
+    background: transparent;
+    border: none;
+    padding: 0;
+    max-width: 480px;
+    width: 94vw;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+dialog#subscribeModal::backdrop {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+}
+
+.subscribe-form {
+    background: linear-gradient(145deg, #1a1d2e, #0f111d);
+    color: var(--text);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subscribe-form .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    font-size: 1.8rem;
+    color: var(--muted);
+    cursor: pointer;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.subscribe-form .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text);
+    transform: rotate(90deg);
+}
+
+.subscribe-form h2 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text);
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.subscribe-form > p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.subscribe-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.subscribe-form .form-group label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.subscribe-form .form-group input[type="tel"] {
+    width: 100%;
+    padding: 0.95rem 1.1rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    transition: all 0.3s;
+}
+
+.subscribe-form .form-group input[type="tel"]:focus {
+    outline: none;
+    border-color: #ff3366;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(255, 51, 102, 0.1);
+}
+
+.subscribe-form .form-group p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 6px;
+}
+
+.subscribe-form button[type="submit"] {
+    background: linear-gradient(135deg, #ff3366, #ff6b6b);
+    color: white;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 700;
+    width: 100%;
+    transition: all 0.3s;
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.subscribe-form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 51, 102, 0.4);
+}
+
+.subscribe-form button[type="submit"]:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    cursor: not-allowed;
+    transform: none;
+}
+
+#message-area-modal .error {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    margin-bottom: 1rem;
+}
+
+#message-area-modal .success {
+    color: #51cf66;
+    background: rgba(81, 207, 102, 0.15);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid rgba(81, 207, 102, 0.3);
+    margin-bottom: 1rem;
+}
+
+/* ========================================
+   📱 RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .auth-buttons {
+        top: 15px;
+        right: 20px;
+        gap: 10px;
+    }
+    
+    .auth-buttons .auth-btn {
+        padding: 8px 18px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 720px) {
+    .auth-buttons {
+        top: 12px;
+        right: 15px;
+        gap: 8px;
+    }
+    
+    .auth-buttons .auth-btn {
+        padding: 7px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .auth-buttons .welcome-text {
+        display: none; /* Hide "Hi, username" on mobile */
+    }
+    
+    dialog#authModal,
+    dialog#subscribeModal {
+        width: 96vw;
+    }
+    
+    .auth-form-container,
+    .subscribe-form {
+        padding: 2rem 1.5rem;
+    }
+    
+    .auth-tab {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-buttons {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+    
+    .auth-buttons .auth-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+    
+    .auth-form h3,
+    .subscribe-form h2 {
+        font-size: 1.4rem;
+    }
+    
+    .auth-form-container,
+    .subscribe-form {
+        padding: 1.5rem 1.25rem;
+    }
+}
+

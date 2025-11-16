@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sinhala Movies</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- =================== HEADER =================== -->
+  <header>
+    <div class="top-logo">
+      <a href="index.html">
+        <img src="assets/images/logo.png" alt="Sinhala Movie Logo">
+      </a>
+    </div>
+    <div class="container">
+      <nav class="navbar">
+        <ul class="menu" role="menubar" aria-label="Main">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <button id="genresBtn" class="dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              Genres ▾
+            </button>
+            <ul id="genresMenu" class="dropdown-menu" role="menu" aria-label="Genres">
+              <li><button data-genre="Action">Action</button></li>
+              <li><button data-genre="Adventure">Adventure</button></li>
+              <li><button data-genre="Fantasy">Fantasy</button></li>
+              <li><button data-genre="Romance">Romance</button></li>
+              <li><button data-genre="Comedy">Comedy</button></li>
+              <li><button data-genre="Horror">Horror</button></li>
+              <li><button data-genre="Drama">Drama</button></li>
+              <li><button data-genre="Sci-fi">Sci-fi</button></li>
+              <li><button data-genre="Animation">Animation</button></li>
+              <li><button data-genre="Family">Family</button></li>
+            </ul>
+          </li>
+          <li><a href="tv-series.html">TV Series</a></li>
+          <li><a href="collections.html" class="active">Collections</a></li>
+          <li class="spacer"></li>
+        </ul>
+        <div class="search">
+          <span>🔍</span>
+          <input id="searchInput" placeholder="Search movies in collection…" />
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 15px;">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '96a29f51b86217947d07668aab3919e6',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/96a29f51b86217947d07668aab3919e6/invoke.js"></script>
+  </div>
+
+  <!-- =================== CONTENT =================== -->
+  <main class="container">
+    <div id="collectionContainer"></div>
+  </main>
+
+  <!-- FIXED PLAYER MODAL - Changed iframe to video tag -->
+  <dialog id="player">
+    <div class="modal-head">
+      <span id="modalTitle">Movie Title</span>
+      <button id="closePlayer">Close</button>
+    </div>
+
+    <div class="modal-body">
+      <!-- CRITICAL FIX: Use <video> tag instead of <iframe> -->
+<div style="
+  max-width:700px;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(120deg,#0e1a28,#263a52);
+  box-shadow:0 12px 32px rgba(0,0,0,0.35);
+">
+  
+  <video 
+    id="videoPlayer" 
+    controls 
+    controlsList="nodownload" 
+    preload="metadata"
+    playsinline
+    style="
+      width:100%;
+      display:block;
+      border-radius:22px;
+      backdrop-filter:blur(4px);
+    "
+  >
+    Your browser doesn't support video playback.
+  </video>
+
+</div>
+    </div>
+  </dialog>
+
+  <!-- =================== FOOTER =================== -->
+  <footer>
+    <div class="container foot">
+      <div class="row center-text">
+        <small>
+          © <span id="year"></span> සිංහල Movies || 🕊🇱🇰
+          All movies featured on this site remain the property of their original creators.
+          <br>
+          ❤️ Special thanks and sincere appreciation to all <strong>Sinhala subtitle creators</strong>, <strong>Sinhala dubbing artists</strong> and <strong>television channels</strong> 
+          for their invaluable contributions to the Sinhala film community.
+        </small>
+      </div>
+    </div>
+  </footer>
+
+  <!-- HELP BUTTON + MODAL INLINE -->
+<style>
+  /* Glowing help button */
+  #helpBtn {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    background: #ffe900;
+    color: #000;
+    font-weight: 900;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 22px;
+    cursor: pointer;
+    z-index: 99999;
+    font-size: 16px;
+    box-shadow: 0 0 12px #ffe900, 0 0 25px rgba(255,233,0,0.7);
+    animation: helpPulse 1.8s infinite ease-in-out;
+  }
+
+  /* Pulse animation for attention */
+  @keyframes helpPulse {
+    0% { transform: scale(1); box-shadow: 0 0 12px #ffe900; }
+    50% { transform: scale(1.07); box-shadow: 0 0 26px #ffea00; }
+    100% { transform: scale(1); box-shadow: 0 0 12px #ffe900; }
+  }
+
+  #helpBtn:hover {
+    transform: scale(1.12);
+  }
+
+  #helpModal {
+    max-width: 90%;
+    width: 340px;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: transparent;
+  }
+  .help-content {
+    padding: 15px;
+    background: #0f1a27;
+    color: #fff;
+    border-radius: 12px;
+  }
+  .help-close {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+  }
+  .video-wrapper {
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+</style>
+
+<button id="helpBtn">🎬 How to Use ?</button>
+
+<dialog id="helpModal">
+  <div class="help-content">
+    <span id="closeHelp" class="help-close">&times;</span>
+    <h2 style="font-size:18px;margin-bottom:10px;">How To Use This Site</h2>
+
+    <div class="video-wrapper">
+      <iframe 
+        id="helpVideo"
+        width="100%" 
+        height="215" 
+        src="https://www.youtube.com/embed/VIDEO_ID?rel=0"
+        title="How to use Sinhala Movies website"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const helpBtn = document.getElementById("helpBtn");
+  const helpModal = document.getElementById("helpModal");
+  const closeHelp = document.getElementById("closeHelp");
+  const helpVideo = document.getElementById("helpVideo");
+  
+  helpBtn.addEventListener("click", () => helpModal.showModal());
+  
+  closeHelp.addEventListener("click", () => {
+    helpModal.close();
+    helpVideo.src = helpVideo.src; // stop video
+  });
+</script>
+
+  <script defer src="js/activeNav.js"></script>
+  <script defer src="js/collection.js"></script>
+  <script defer src="js/navbar.js"></script>
+  <script defer src="js/tracker.js"></script>
+  <script type='text/javascript' src='//pl27957579.effectivegatecpm.com/6b/9d/9d/6b9d9d3f611c176f5d2c2f8b9a55bcc2.js'></script>
+</body>
+</html>

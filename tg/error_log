@@ -1,0 +1,29 @@
+[04-Nov-2025 02:42:53 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sinhbtve_sinhalamovies.videos' doesn't exist in /home/sinhbtve/public_html/tg/stream.php:29
+Stack trace:
+#0 /home/sinhbtve/public_html/tg/stream.php(29): PDOStatement->execute()
+#1 {main}
+  thrown in /home/sinhbtve/public_html/tg/stream.php on line 29
+[04-Nov-2025 02:42:59 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sinhbtve_sinhalamovies.videos' doesn't exist in /home/sinhbtve/public_html/tg/webhook.php:15
+Stack trace:
+#0 /home/sinhbtve/public_html/tg/webhook.php(15): PDOStatement->execute()
+#1 /home/sinhbtve/public_html/tg/webhook.php(30): save_video_row()
+#2 {main}
+  thrown in /home/sinhbtve/public_html/tg/webhook.php on line 15
+[04-Nov-2025 02:44:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sinhbtve_sinhalamovies.videos' doesn't exist in /home/sinhbtve/public_html/tg/webhook.php:15
+Stack trace:
+#0 /home/sinhbtve/public_html/tg/webhook.php(15): PDOStatement->execute()
+#1 /home/sinhbtve/public_html/tg/webhook.php(30): save_video_row()
+#2 {main}
+  thrown in /home/sinhbtve/public_html/tg/webhook.php on line 15
+[04-Nov-2025 02:46:36 UTC] PHP Warning:  Undefined array key "file_path" in /home/sinhbtve/public_html/tg/stream.php on line 38
+[04-Nov-2025 02:46:38 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'file_path' in 'SET' in /home/sinhbtve/public_html/tg/stream.php:53
+Stack trace:
+#0 /home/sinhbtve/public_html/tg/stream.php(53): PDOStatement->execute()
+#1 {main}
+  thrown in /home/sinhbtve/public_html/tg/stream.php on line 53
+[04-Nov-2025 02:46:44 UTC] PHP Warning:  Undefined array key "file_path" in /home/sinhbtve/public_html/tg/stream.php on line 38
+[04-Nov-2025 02:46:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'file_path' in 'SET' in /home/sinhbtve/public_html/tg/stream.php:53
+Stack trace:
+#0 /home/sinhbtve/public_html/tg/stream.php(53): PDOStatement->execute()
+#1 {main}
+  thrown in /home/sinhbtve/public_html/tg/stream.php on line 53
