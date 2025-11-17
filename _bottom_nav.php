@@ -16,6 +16,10 @@
         <span class="nav-icon">📚</span>
         <span class="nav-label">Collection</span>
     </a>
+    <a href="profile.php" class="nav-item" data-page="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+    </a>
 </nav>
 
 <style>
@@ -136,7 +140,8 @@ body {
                 (page === "shots" && (currentPage === "index.php" || currentPage === "")) ||
                 (page === "movies" && currentPage === "movies.php") ||
                 (page === "tv-series" && currentPage === "tv-series.php") ||
-                (page === "collections" && currentPage === "collections.php")
+                (page === "collections" && currentPage === "collections.php") ||
+                (page === "profile" && currentPage === "profile.php")
             ) {
                 item.classList.add("active");
             }
